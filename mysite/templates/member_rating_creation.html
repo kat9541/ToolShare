@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Rate This User{% endblock %}
+
+{% block content %}
+<style type="text/css">
+    body {
+		background: #e0e0e0;
+	}
+	
+	.mrating{
+    	margin: 0 auto;
+		padding: 20px;
+		width: 80%;
+		background: white;
+    }
+</style>
+<div class="mrating">
+	<form action="/member_rating" method="post">
+		{% csrf_token %}
+		<div class="form-inline">
+			<label for="member_rating" class="col-sm-2 control-label">Rate this User from 1 to 10:</label>
+			<select class="form-control input-lg" name="member_rating">
+				<option value="10">10</option>
+				<option value="9">9</option>
+				<option value="8">8</option>
+				<option value="7">7</option>
+				<option value="6">6</option>
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			</select>
+		</div>
+		<br>
+		<div class="form-inline">
+			  <label class="col-sm-2 control-label" for="comment">Any Comments?</label>
+			  <div class="col-sm10">
+				<textarea class="form-control" maxlength="500" id="comment" name="comment" placeholder="Comment" rows="15"></textarea>
+			  </div>
+		</div>
+		<br>
+		<input type="submit" class="btn btn-primary" role="button" value="Send">
+	</form>
+</div>
+{% endblock %}
